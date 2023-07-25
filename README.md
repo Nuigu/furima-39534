@@ -40,6 +40,7 @@ Things you may want to cover:
 
 ## Associations
 has_many :items
+has_many :purchase_logs
 
 # Itemsテーブル
 |Column            |Type      |Options                       |
@@ -54,12 +55,22 @@ has_many :items
 |prefecture_id     |integer   |null: false                   |
 |delivery_time_id  |integer   |null: false                   |
 
-
 ## Associations
 belongs_to :user
 has_one :order
+has_many :purchase_logs
 
-# Ordersテーブル
+# PurchaseLogsテーブル
+|Column            |Type      |Options                       |
+|------------------|----------|------------------------------|
+|item              |references|null: false, foreign_key: true|
+|user              |references|null: false, foreign_key: true|
+
+## Associations
+belongs_to :user
+belongs_to :item
+
+# Addressesテーブル
 |Column            |Type      |Options                       |
 |------------------|----------|------------------------------|
 |postal_code       |string    |null: false                   |
