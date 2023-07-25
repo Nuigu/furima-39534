@@ -66,11 +66,11 @@ has_one :order
 # Ordersテーブル
 |Column            |Type      |Options                       |
 |------------------|----------|------------------------------|
-|postal_code       |integer   |null: false                   |
+|postal_code       |string    |null: false                   |
 |city              |string    |null: false                   |
 |address           |string    |null: false                   |
-|building          |string    |null: false                   |
-|phone_number      |integer   |null: false                   |
+|building          |string    |                              |
+|phone_number      |string    |null: false                   |
 |item              |references|null: false, foreign_key: true|
 |prefecture        |references|null: false, foreign_key: true|
 
