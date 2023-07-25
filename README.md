@@ -55,7 +55,7 @@ has_many :items
 belongs_to :user
 belongs_to :quality
 belongs_to :delivery_cost
-belongs_to :delivery_from
+belongs_to :prefecture
 belongs_to :delivery_time
 has_one :order
 
