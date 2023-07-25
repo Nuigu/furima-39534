@@ -48,19 +48,15 @@ has_many :items
 |detail            |text      |null: false                   |
 |price             |integer   |null: false                   |
 |user              |references|null: false, foreign_key: true|
-|category          |references|null: false, foreign_key: true|
-|quality           |references|null: false, foreign_key: true|
-|delivery_cost     |references|null: false, foreign_key: true|
-|prefecture        |references|null: false, foreign_key: true|
-|delivery_time     |references|null: false, foreign_key: true|
+|category_id       |integer   |null: false                   |
+|quality_id        |integer   |null: false                   |
+|delivery_cost_id  |integer   |null: false                   |
+|prefecture_id     |integer   |null: false                   |
+|delivery_time_id  |integer   |null: false                   |
 
 
 ## Associations
 belongs_to :user
-belongs_to :quality
-belongs_to :delivery_cost
-belongs_to :prefecture
-belongs_to :delivery_time
 has_one :order
 
 # Ordersテーブル
@@ -72,7 +68,7 @@ has_one :order
 |building          |string    |                              |
 |phone_number      |string    |null: false                   |
 |item              |references|null: false, foreign_key: true|
-|prefecture        |references|null: false, foreign_key: true|
+|prefecture_id     |integer   |null: false                   |
 
 ## Associations
 belongs_to :item
