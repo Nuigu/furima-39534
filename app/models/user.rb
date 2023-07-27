@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
 
-  validates :email, presence: true #, uniqueness: true
+  #validates :email, presence: true, uniqueness: true
   validates :nickname, presence: true
   validates :birthday, presence: true
 
