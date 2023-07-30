@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :move_to_signin, only: [:new, :create]
 
   def index
+    @items = Item.includes(:user).order(created_at: :desc)
   end
 
   def new
