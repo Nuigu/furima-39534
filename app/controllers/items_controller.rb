@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :move_to_signin, only: [:new, :create]
+  before_action :move_to_signin, only: [:new, :create, :edit]
 
   def index
     @items = Item.includes(:user).order(created_at: :desc)
@@ -23,6 +23,14 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def edit
+    @item = Item.find(params[:id])
+    protect_item
+  end
+
+  def update
+  end
+
   private
 
   def item_params
@@ -32,6 +40,12 @@ class ItemsController < ApplicationController
   def move_to_signin
     unless user_signed_in?
       redirect_to new_user_session_path
+    end
+  end
+
+  def protect_item
+    unless current_user.id == @item.user_id
+      redirect_to root_path
     end
   end
 end
