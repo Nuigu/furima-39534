@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
 
-  before_action :move_to_signin, only: [:new, :create, :edit]
-  before_action :set_item, only: [:show, :edit, :update]
+  before_action :move_to_signin, only: [:new, :create, :edit, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :protect_item, only: [:edit, :destroy]
 
   def index
     @items = Item.includes(:user).order(created_at: :desc)
@@ -24,7 +25,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    protect_item
   end
 
   def update
@@ -33,6 +33,11 @@ class ItemsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @item.destroy
+    redirect_to root_path
   end
 
   private
