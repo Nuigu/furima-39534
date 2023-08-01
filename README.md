@@ -56,7 +56,7 @@ has_many :purchase_logs
 belongs_to :user
 has_one :purchase_log
 
-# PurchaseLogsテーブル
+# Ordersテーブル
 |Column            |Type      |Options                       |
 |------------------|----------|------------------------------|
 |item              |references|null: false, foreign_key: true|
