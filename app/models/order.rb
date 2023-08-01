@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   include ActiveModel::Model
 
-  # attr_accessor :postal_code, :city, :address, :building, :phone_number, :prefecture_id, :token
+  attr_accessor :postal_code, :city, :address, :building, :phone_number, :prefecture_id#, :token
 
   # バリデーション
 
@@ -11,4 +11,7 @@ class Order < ApplicationRecord
   has_one :address
 
   # 処理
+  def create
+    
+  end
 end
