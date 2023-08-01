@@ -76,7 +76,7 @@ has_one :address
 |building          |string    |                              |
 |phone_number      |string    |null: false                   |
 |prefecture_id     |integer   |null: false                   |
-|purchase_log      |references|null: false, foreign_key: true|
+|order             |references|null: false, foreign_key: true|
 
 ## Associations
 belongs_to :purchase_log
