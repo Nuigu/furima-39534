@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-  before do
-    @item = FactoryBot.build(:item)
-  end
 
   describe "商品出品機能" do
+    before do
+      @item = FactoryBot.build(:item)
+    end
+  
     context "出品できるとき" do
       it "必要な情報を適切に入力して「出品する」ボタンを押すと、商品情報がデータベースに保存される" do
         expect(@item).to be_valid
