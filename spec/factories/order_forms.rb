@@ -6,5 +6,6 @@ FactoryBot.define do
     building          {"法務省"}
     phone_number      {"00011112222"}
     prefecture_id     {13}
+    token {"tok_abcdefghijk00000000000000000"}
   end
 end

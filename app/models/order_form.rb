@@ -10,6 +10,8 @@ class OrderForm
     validates :prefecture_id, numericality: {greater_than: 1, message: "都道府県を選択してください"}
   end
 
+  validates :token, presence: {message: "お支払い情報を正しく入力してください"}
+
   def save
     return false if invalid?
     order = Order.create(user_id: user_id, item_id: item_id)

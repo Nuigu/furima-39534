@@ -105,6 +105,12 @@ RSpec.describe OrderForm, type: :model do
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include("Phone number 半角数字のみで入力してください")
       end
+
+      it "tokenがnilでは購入できない" do
+        @order_form.token = nil
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include("Token お支払い情報を正しく入力してください")
+      end
     end
   end
 end
