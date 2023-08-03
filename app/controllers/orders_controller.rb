@@ -1,10 +1,16 @@
 class OrdersController < ApplicationController
   before_action :require_signin
   before_action :set_item
+  before_action :seller_cannot_buy
 
   def index
-    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-    @order_form = OrderForm.new
+    orders = Order.pluck(:item_id)
+    if orders.include?(@item.id)
+      redirect_to root_path
+    else
+      gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
+      @order_form = OrderForm.new
+    end
   end
 
   def create
@@ -22,6 +28,12 @@ class OrdersController < ApplicationController
   def require_signin
     unless user_signed_in?
       redirect_to new_user_session_path
+    end
+  end
+
+  def seller_cannot_buy
+    if current_user.id == @item.user_id
+      redirect_to root_path
     end
   end
 
