@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  # before_action :require_signin
   before_action :set_item
   before_action :seller_cannot_buy
 
@@ -25,12 +24,6 @@ class OrdersController < ApplicationController
   end
 
   private
-
-  def require_signin
-    unless user_signed_in?
-      redirect_to new_user_session_path
-    end
-  end
 
   def seller_cannot_buy
     if current_user.id == @item.user_id
