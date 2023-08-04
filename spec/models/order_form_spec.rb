@@ -94,6 +94,12 @@ RSpec.describe OrderForm, type: :model do
         expect(@order_form.errors.full_messages).to include("Phone number 桁数を確認してください")
       end
 
+      it "電話番号が12桁以上では購入できない" do
+        @order_form.phone_number = "123456789012"
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include("Phone number 桁数を確認してください")
+      end
+
       it "電話番号が全角では購入できない" do
         @order_form.phone_number = "０００１１１１２２２２"
         @order_form.valid?
