@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :require_signin
+  before_action :authenticate_user!
+  # before_action :require_signin
   before_action :set_item
   before_action :seller_cannot_buy
 
