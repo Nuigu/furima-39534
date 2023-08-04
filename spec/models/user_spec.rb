@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  before do
-    @user = FactoryBot.build(:user)
-  end
 
   describe "ユーザー登録機能" do
+    before do
+      @user = FactoryBot.build(:user)
+    end
 
     context "新規登録できるとき" do
       it "必要な情報を適切に入力して「会員登録」ボタンを押すと、ユーザーの新規登録ができること" do

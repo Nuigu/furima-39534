@@ -2,10 +2,11 @@ class ItemsController < ApplicationController
 
   before_action :move_to_signin, only: [:new, :create, :edit, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_orders, only: [:index, :show, :edit]
   before_action :protect_item, only: [:edit, :destroy]
 
   def index
-    @items = Item.includes(:user).order(created_at: :desc)
+    @items = Item.all.order(created_at: :desc)
   end
 
   def new
@@ -25,6 +26,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    if @orders.include?(@item.id)
+      redirect_to root_path
+    end
   end
 
   def update
@@ -54,6 +58,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_orders
+    @orders = Order.pluck(:item_id)
   end
 
   def protect_item
